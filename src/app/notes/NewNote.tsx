@@ -3,13 +3,18 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function NewNote() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const createNote = async () => {
+  const router = useRouter();
+
+  const createNote = async (e: any) => {
+    e.preventDefault();
+
     await fetch("http://127.0.0.1:8090/api/collections/notes/records", {
       method: "POST",
       headers: {
@@ -20,6 +25,8 @@ export default function NewNote() {
         content,
       }),
     });
+
+    router.refresh();
 
     setTitle("");
     setContent("");
@@ -46,7 +53,9 @@ export default function NewNote() {
           onChange={(e) => setContent(e.target.value)}
         />
       </div>
-      <Button variant={"default"}>Create</Button>
+      <Button type="submit" variant={"default"}>
+        Create
+      </Button>
     </form>
   );
 }
