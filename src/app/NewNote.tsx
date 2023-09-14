@@ -14,6 +14,7 @@ import { useState } from "react";
 export default function NewNote() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [color, setColor] = useState("#fde047");
 
   const router = useRouter();
 
@@ -28,6 +29,7 @@ export default function NewNote() {
       body: JSON.stringify({
         title,
         content,
+        color,
       }),
     });
 
@@ -54,13 +56,22 @@ export default function NewNote() {
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div className="flex flex-col mb-2">
+          <div className="flex flex-col">
             <label htmlFor="content">Content</label>
             <Textarea
               name="content"
               id="content"
               value={content}
               onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
+          <div className="flex my-2">
+            <input
+              type="color"
+              name="color"
+              id="color"
+              defaultValue="#fde047"
+              onChange={(e) => setColor(e.target.value)}
             />
           </div>
           <Button type="submit" variant={"default"}>

@@ -14,6 +14,7 @@ import React, { useState } from "react";
 export default function UpdateComponent({ note }: any) {
   const [title, setTitle] = useState(note.title);
   const [content, setContent] = useState(note.content);
+  const [color, setColor] = useState(note.color);
 
   const router = useRouter();
 
@@ -28,6 +29,7 @@ export default function UpdateComponent({ note }: any) {
       body: JSON.stringify({
         title,
         content,
+        color,
       }),
     });
 
@@ -43,23 +45,36 @@ export default function UpdateComponent({ note }: any) {
         </PopoverTrigger>
         <PopoverContent>
           <form onSubmit={updateNote}>
-            <label htmlFor="title">Title</label>
-            <Input
-              type="text"
-              name="title"
-              id="title"
-              defaultValue={note.title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <label htmlFor="title">Content</label>
-            <Input
-              className="mb-2"
-              type="text"
-              name="content"
-              id="content"
-              defaultValue={note.content}
-              onChange={(e) => setContent(e.target.value)}
-            />
+            <div>
+              <label htmlFor="title">Title</label>
+              <Input
+                type="text"
+                name="title"
+                id="title"
+                defaultValue={note.title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </div>
+            <div>
+              <label htmlFor="title">Content</label>
+              <Input
+                className="my-2"
+                type="text"
+                name="content"
+                id="content"
+                defaultValue={note.content}
+                onChange={(e) => setContent(e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="color"
+                name="color"
+                id="color"
+                defaultValue={note.color}
+                onChange={(e) => setColor(e.target.value)}
+              />
+            </div>
             <Button>Update</Button>
           </form>
         </PopoverContent>
