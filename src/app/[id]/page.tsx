@@ -1,5 +1,6 @@
 import getNote from "@/functions/getNote";
 import Link from "next/link";
+import Options from "./options/page";
 
 export default async function NotePage({ params }: any) {
   const note = await getNote(params.id);
@@ -7,7 +8,7 @@ export default async function NotePage({ params }: any) {
   return (
     <>
       <h1>
-        <Link href="/notes">Notes</Link> / {note.title}
+        <Link href="/">Back</Link>
       </h1>
       <div className="bg-yellow-300 w-60 shadow-md text-slate-800 flex flex-col justify-between p-2 h-60 rounded-sm">
         <div>
@@ -18,6 +19,7 @@ export default async function NotePage({ params }: any) {
           <h3>{note.created}</h3>
         </div>
       </div>
+      <Options note={note} />
     </>
   );
 }
