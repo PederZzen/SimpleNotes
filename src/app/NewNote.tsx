@@ -1,12 +1,9 @@
 "use client";
 
+import ColorPicker from "@/components/colorPicker/page";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -40,13 +37,13 @@ export default function NewNote() {
   };
 
   return (
-    <Popover>
-      <PopoverTrigger>
+    <Dialog>
+      <DialogTrigger>
         <div id="nyttNotatIkon"></div>
-      </PopoverTrigger>
-      <PopoverContent>
-        <form onSubmit={createNote} className="w-60">
-          <div className="flex flex-col">
+      </DialogTrigger>
+      <DialogContent>
+        <form onSubmit={createNote}>
+          <div className="flex flex-col mb-4">
             <label htmlFor="title">Title</label>
             <Input
               type="text"
@@ -56,7 +53,7 @@ export default function NewNote() {
               onChange={(e) => setTitle(e.target.value)}
             />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mb-4">
             <label htmlFor="content">Content</label>
             <Textarea
               name="content"
@@ -65,7 +62,7 @@ export default function NewNote() {
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
-          <div className="flex my-2">
+          <div className="flex mb-4">
             <input
               type="color"
               name="color"
@@ -73,12 +70,13 @@ export default function NewNote() {
               defaultValue="#fde047"
               onChange={(e) => setColor(e.target.value)}
             />
+            <ColorPicker />
           </div>
           <Button type="submit" variant={"default"}>
             Create
           </Button>
         </form>
-      </PopoverContent>
-    </Popover>
+      </DialogContent>
+    </Dialog>
   );
 }

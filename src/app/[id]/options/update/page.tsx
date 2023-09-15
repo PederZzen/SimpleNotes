@@ -1,12 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
 import { BASE_URL } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -39,11 +35,11 @@ export default function UpdateComponent({ note }: any) {
 
   return (
     <>
-      <Popover>
-        <PopoverTrigger asChild>
+      <Dialog>
+        <DialogTrigger asChild>
           <Button>Update</Button>
-        </PopoverTrigger>
-        <PopoverContent>
+        </DialogTrigger>
+        <DialogContent>
           <form onSubmit={updateNote}>
             <div>
               <label htmlFor="title">Title</label>
@@ -77,8 +73,8 @@ export default function UpdateComponent({ note }: any) {
             </div>
             <Button>Update</Button>
           </form>
-        </PopoverContent>
-      </Popover>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
