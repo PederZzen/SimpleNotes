@@ -70,7 +70,12 @@ export default function NewNote() {
               defaultValue="#fde047"
               onChange={(e) => setColor(e.target.value)}
             />
-            <ColorPicker />
+            <ColorPicker checkedColor="#FAAFA8" />
+            <ColorPicker checkedColor="#F7D4C7" />
+            <ColorPicker checkedColor="#FFF8B8" />
+            <ColorPicker checkedColor="#E2F6D3" />
+            <ColorPicker checkedColor="#B4DDD3" />
+            <ColorPicker checkedColor="#D4E4ED" />
           </div>
           <Button type="submit" variant={"default"}>
             Create

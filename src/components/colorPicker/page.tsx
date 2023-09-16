@@ -1,11 +1,11 @@
 import React from "react";
-import { Container } from "./style";
+import { Checkmark, Container } from "./style";
 
-export default function ColorPicker() {
+export default function ColorPicker({ checkedColor }: any) {
   return (
     <Container>
-      <input type="radio" />
-      <span></span>
+      <input type="radio" name="radio" />
+      <Checkmark color={checkedColor} />
     </Container>
   );
 }
