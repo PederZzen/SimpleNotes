@@ -27,7 +27,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/[id]/options/delete"
+    "src/app/[id]/options/delete",
+    "src/components/colorPicker/style.js",
+    "src/components/customCheckbox"
   ],
   "exclude": ["node_modules"]
 }

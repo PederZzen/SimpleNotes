@@ -13,9 +13,9 @@ export default function Note({ note }: any) {
       <Link href={`/${id}`}>
         <div
           style={{ backgroundColor: color }}
-          className={`relative w-60 shadow-md text-slate-800 flex flex-col justify-between p-2 h-60 rounded-sm`}
+          className={`relative w-60 shadow-md text-slate-800 flex flex-col justify-between p-2 rounded-sm`}
         >
-          <div>
+          <div className="mb-2">
             <h2 className="font-bold mb-2">{title}</h2>
             <p>{content}</p>
           </div>

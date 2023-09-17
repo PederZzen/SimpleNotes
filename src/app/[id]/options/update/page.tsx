@@ -1,9 +1,10 @@
 "use client";
 
+import ColorPicker from "@/components/colorPicker/page";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { BASE_URL } from "@/lib/utils";
+import { BASE_URL, colorPickerColors } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -11,6 +12,12 @@ export default function UpdateComponent({ note }: any) {
   const [title, setTitle] = useState(note.title);
   const [content, setContent] = useState(note.content);
   const [color, setColor] = useState(note.color);
+
+  const handleColorChange = (newColor: string) => {
+    setColor(newColor);
+  };
+
+  const colors = colorPickerColors;
 
   const router = useRouter();
 
@@ -62,14 +69,16 @@ export default function UpdateComponent({ note }: any) {
                 onChange={(e) => setContent(e.target.value)}
               />
             </div>
-            <div>
-              <input
-                type="color"
-                name="color"
-                id="color"
-                defaultValue={note.color}
-                onChange={(e) => setColor(e.target.value)}
-              />
+            <div className="flex mb-8">
+              {colors.map((color, idx) => {
+                return (
+                  <ColorPicker
+                    key={idx}
+                    checkedColor={color}
+                    onColorChange={handleColorChange}
+                  />
+                );
+              })}
             </div>
             <Button>Update</Button>
           </form>

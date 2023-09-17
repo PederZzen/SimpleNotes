@@ -12,7 +12,7 @@ export default async function NotesPage() {
         <NewNote />
       </section>
       <section>{/* <FilterNotes /> */}</section>
-      <section className="flex flex-wrap gap-2 mt-4">
+      <section className="">
         {notes ? notes.map((note) => <Note key={note.id} note={note} />) : null}
       </section>
     </div>

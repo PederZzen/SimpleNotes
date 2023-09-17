@@ -5,13 +5,20 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { colorPickerColors } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function NewNote() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [color, setColor] = useState("#fde047");
+  const [color, setColor] = useState("#c4c4c4");
+
+  const handleColorChange = (newColor: string) => {
+    setColor(newColor);
+  };
+
+  const colors = colorPickerColors;
 
   const router = useRouter();
 
@@ -62,20 +69,16 @@ export default function NewNote() {
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
-          <div className="flex mb-4">
-            <input
-              type="color"
-              name="color"
-              id="color"
-              defaultValue="#fde047"
-              onChange={(e) => setColor(e.target.value)}
-            />
-            <ColorPicker checkedColor="#FAAFA8" />
-            <ColorPicker checkedColor="#F7D4C7" />
-            <ColorPicker checkedColor="#FFF8B8" />
-            <ColorPicker checkedColor="#E2F6D3" />
-            <ColorPicker checkedColor="#B4DDD3" />
-            <ColorPicker checkedColor="#D4E4ED" />
+          <div className="flex mb-8">
+            {colors.map((color, idx) => {
+              return (
+                <ColorPicker
+                  key={idx}
+                  checkedColor={color}
+                  onColorChange={handleColorChange}
+                />
+              );
+            })}
           </div>
           <Button type="submit" variant={"default"}>
             Create
