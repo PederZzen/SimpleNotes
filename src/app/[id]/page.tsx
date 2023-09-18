@@ -14,8 +14,8 @@ export default async function NotePage({ params }: any) {
         <Link href="/">Back</Link>
       </h1>
       <div
-        style={{ backgroundColor: note.color }}
-        className="w-60 shadow-md text-slate-800 flex flex-col justify-between p-2 h-60 rounded-sm"
+        style={{ backgroundColor: note.color, minHeight: "15rem" }}
+        className="w-60 shadow-md text-slate-800 flex flex-col justify-between p-2 rounded-sm"
       >
         <div>
           <h2 className="font-bold mb-2">{note.title}</h2>

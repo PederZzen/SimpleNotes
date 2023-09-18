@@ -4,6 +4,7 @@ import ColorPicker from "@/components/colorPicker/page";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { BASE_URL, colorPickerColors } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -60,9 +61,8 @@ export default function UpdateComponent({ note }: any) {
             </div>
             <div>
               <label htmlFor="title">Content</label>
-              <Input
+              <Textarea
                 className="my-2"
-                type="text"
                 name="content"
                 id="content"
                 defaultValue={note.content}
